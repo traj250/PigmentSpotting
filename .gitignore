@@ -1,7 +1,5 @@
 .DS_Store
 
-print('this is a test')
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
