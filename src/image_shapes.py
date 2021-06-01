@@ -14,7 +14,7 @@ def get_image_kmeans(image, k):
     ret,label,center=cv2.kmeans(Z,K,None,criteria,10,cv2.KMEANS_RANDOM_CENTERS)
     center = np.uint8(center)
     res = center[label.flatten()]
-    res2 = res.reshape((image.shape))
+    res2 = res.reshape((image.shape)) #changing the shape w/the context of the img?
     return res2
 
 def process_image(im):
