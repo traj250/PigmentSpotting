@@ -22,10 +22,10 @@ def pca_to_grey(image, mask, inverted=True):
     non_outliers = [x for x in newpoints if x >= lower_bound]
     new_max = max(non_outliers)
     new_min = min(newpoints)
-    np.clip(newpoints, new_min, new_max, out=newpoints)
+    np.clip(newpoints, new_min, new_max, out=newpoints) #parameterize data according to established min/max
     newpoints = np.asarray(newpoints, dtype=np.float64)
     rescale = np.interp(newmat, (np.min(newpoints), np.max(newpoints)), (0,255))
-    rescale = np.around(rescale).astype(np.uint8)
+    rescale = np.around(rescale).astype(np.uint8) #Evenly round to the given number of decimals.
     grey = rescale.reshape([x,y])
     if inverted:
         grey = cv2.bitwise_not(grey)
@@ -63,6 +63,10 @@ def create_point_cloud(image, top_y, bottom_y, left_x, right_x, th):
     # plt.invert_yaxis()
     # plt.show()
     return X,Y, data
+    cut_off_val = iqr * 1.5
+21
+    cut_off_val = iqr * 1.5
+21
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
